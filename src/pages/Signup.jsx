@@ -86,14 +86,14 @@ export default function Signup() {
           <div className="m-3">
             <label htmlFor="address" className="form-label">Address</label>
             <fieldset>
-              <input type="text" className="form-control" name='address' placeholder='"Click below for fetching address"' aria-describedby="emailHelp"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
+              <input type="text" className="form-control" name='geolocation' aria-describedby="emailHelp"
+                value={credentials.geolocation}
+                onChange={onChange}
               />
             </fieldset>
           </div>
           <div className="m-3">
-            <button type="button" name="geolocation" className=" btn btn-warning"
+            <button type="button" name="Select on Map" className=" btn btn-warning"
     onClick={getLocation}
             >
               Click for current Location </button>

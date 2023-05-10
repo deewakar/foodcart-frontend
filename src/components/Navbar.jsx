@@ -1,9 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
-  const handleLogout = () => {
+  let navigate = useNavigate();
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate("/");
   }
   
   const loadCart = () => {
@@ -34,8 +37,8 @@ export default function Navbar() {
                 <Link className="btn btn-outline-warning  text-white mx-1 " to="/login">Login</Link>
                 <Link className="btn btn-outline-warning text-white mx-1 " to="/signup">Signup</Link>
               </form> :
-              <div>
-
+              <div> <button onClick={handleLogout} className="btn btn-outline-warning text-white mx-1" >Logout</button> </div>
+              }
               {/*
                 <div className="btn bg-white text-success mx-2 " onClick={loadCart}>
                   <Badge color="secondary" badgeContent={items.length} >
@@ -47,7 +50,6 @@ export default function Navbar() {
                 {cartView ? <Modal onClose={() => setCartView(false)}><Cart></Cart></Modal> : ""}
               */}
 
-                <button onClick={handleLogout} className="btn btn-outline-warning text-white mx-1" >Logout</button></div>}
           </div>
         </div>
       </nav>
