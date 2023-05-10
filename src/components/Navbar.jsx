@@ -2,6 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Navbar() {
+  const handleLogout = () => {
+
+  }
+  
+  const loadCart = () => {
+
+  }
+  
   return (
     <div>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark text-white position-sticky"
@@ -23,11 +31,12 @@ export default function Navbar() {
             </ul>
             {(!localStorage.getItem("token")) ?
               <form className="d-flex">
-                <Link className="btn btn-outline-warning text-warning mx-1 " to="/login">Login</Link>
-                <Link className="btn btn-outline-warning text-warning mx-1 " to="/signup">Signup</Link>
+                <Link className="btn btn-outline-warning  text-white mx-1 " to="/login">Login</Link>
+                <Link className="btn btn-outline-warning text-white mx-1 " to="/signup">Signup</Link>
               </form> :
               <div>
 
+              {/*
                 <div className="btn bg-white text-success mx-2 " onClick={loadCart}>
                   <Badge color="secondary" badgeContent={items.length} >
                     <ShoppingCartIcon />
@@ -36,8 +45,9 @@ export default function Navbar() {
                 </div>
 
                 {cartView ? <Modal onClose={() => setCartView(false)}><Cart></Cart></Modal> : ""}
+              */}
 
-                <button onClick={handleLogout} className="btn bg-white text-success" >Logout</button></div>}
+                <button onClick={handleLogout} className="btn btn-outline-warning text-white mx-1" >Logout</button></div>}
           </div>
         </div>
       </nav>
