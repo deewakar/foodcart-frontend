@@ -1,4 +1,4 @@
-export default function Carousel() {
+export default function Carousel({handleSearch}) {
 	const CarouselItems = [
 		{
 			"name": "Pancakes with fruit salad and maple sauce",
@@ -32,10 +32,12 @@ export default function Carousel() {
 							<input
 								className="form-control me-2 w-75 bg-white text-dark"
 								type="search"
-								placeholder="Type in..."
+								placeholder="Filter product e.g. Burger"
 								aria-label="Search"
 							/>
-							<button className="btn text-white bg-success" type="submit">
+							<button className="btn text-white bg-success" type="submit"
+						onClick={(e) => { e.preventDefault(); handleSearch(e.target.value)}}	
+							>
 								Search
 							</button>
 						</form>

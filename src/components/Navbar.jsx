@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
   let navigate = useNavigate();
@@ -13,6 +13,7 @@ export default function Navbar() {
 
   }
   
+  const currentPath = useLocation().pathname;
   return (
     <div>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark text-white position-sticky"
@@ -23,10 +24,13 @@ export default function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse " id="navbarSupportedContent">
+
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link className="nav-link fs-5 mx-3 active" aria-current="page" to="/">Home</Link>  {/* index.css - nav-link color white */}
-              </li>
+              {currentPath !== '/' ?
+                <li className="nav-item">
+                  <Link className="nav-link fs-5 mx-3 active" aria-current="page" to="/">Home</Link>  {/* index.css - nav-link color white */}
+                </li>
+                : ""}
               {(localStorage.getItem("token")) ?
                 <li className="nav-item">
                   <Link className="nav-link fs-5 mx-3 active" aria-current="page" to="/myorder" >My Orders</Link>  {/* index.css - nav-link color white */}
@@ -38,8 +42,8 @@ export default function Navbar() {
                 <Link className="btn btn-outline-warning text-white mx-1 " to="/signup">Signup</Link>
               </form> :
               <div> <button onClick={handleLogout} className="btn btn-outline-warning text-white mx-1" >Logout</button> </div>
-              }
-              {/*
+            }
+            {/*
                 <div className="btn bg-white text-success mx-2 " onClick={loadCart}>
                   <Badge color="secondary" badgeContent={items.length} >
                     <ShoppingCartIcon />
