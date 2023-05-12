@@ -22,6 +22,7 @@ const [foodCat, setFoodCat] = useState([])
 
     response = await response.json()
       console.log(response[0]);
+      console.log(response[1]);
     setFoodItems(response[0])
     setFoodCat(response[1])
   }

@@ -41,7 +41,9 @@ export default function Navbar() {
                 <Link className="btn btn-outline-warning  text-white mx-1 " to="/login">Login</Link>
                 <Link className="btn btn-outline-warning text-white mx-1 " to="/signup">Signup</Link>
               </form> :
-              <div> <button onClick={handleLogout} className="btn btn-outline-warning text-white mx-1" >Logout</button> </div>
+              <div>
+                <Link className="btn btn-outline-warning" to="/cart"> My Cart <span className="badge bg-success">4</span></Link>
+                 <button onClick={handleLogout} className="btn btn-outline-warning text-white mx-1" >Logout</button> </div>
             }
             {/*
                 <div className="btn bg-white text-success mx-2 " onClick={loadCart}>

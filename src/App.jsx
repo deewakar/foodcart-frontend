@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Cart from './pages/Cart';
+
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 //import './App.css';
@@ -18,6 +20,7 @@ export default function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/cart" element={<Cart />} />
       </Routes>
           </div>
     <Footer />
