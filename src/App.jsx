@@ -8,11 +8,12 @@ import Cart from './pages/Cart';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { CartProvider } from './components/ContextReducer';
 //import './App.css';
 
 export default function App() {
   return (
-    <>
+    <CartProvider>
     <Router>
     <Navbar />
         <div className="d-flex flex-column min-vh-100">
@@ -25,6 +26,6 @@ export default function App() {
           </div>
     <Footer />
 </Router>
-    </>
+    </CartProvider>
   );
 }

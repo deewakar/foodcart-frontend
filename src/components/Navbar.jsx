@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
+import {useCart} from './ContextReducer';
+
 export default function Navbar() {
   let navigate = useNavigate();
 
@@ -14,6 +16,7 @@ export default function Navbar() {
   }
   
   const currentPath = useLocation().pathname;
+  const cartItems = useCart();
   return (
     <div>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark text-white position-sticky"
@@ -42,7 +45,7 @@ export default function Navbar() {
                 <Link className="btn btn-outline-warning text-white mx-1 " to="/signup">Signup</Link>
               </form> :
               <div>
-                <Link className="btn btn-outline-warning" to="/cart"> My Cart <span className="badge bg-success">4</span></Link>
+                <Link className="btn btn-outline-warning" to="/cart"> My Cart <span className="badge bg-success">{cartItems.length}</span></Link>
                  <button onClick={handleLogout} className="btn btn-outline-warning text-white mx-1" >Logout</button> </div>
             }
             {/*

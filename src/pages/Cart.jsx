@@ -1,5 +1,6 @@
-
+import {useCart, useDispatchCart} from '../components/ContextReducer';
 export default function Cart() {
+  /*
     const data = [
         {"name": "Palak Paneer",
         "qty": 3,
@@ -7,14 +8,24 @@ export default function Cart() {
             "price": 150
         }
     ]
-    const handleCheckOut = () => {
+  */
+  let data = useCart();
+  let dispatch = useDispatchCart();
+  if (data.length === 0) {
+    return (
+      <div>
+        <div className='m-5 w-100 text-center fs-3'>The Cart is Empty!</div>
+      </div>
+    )
+  }
+  const handleCheckOut = () => {
 
-    };
+  };
 
-    const totalPrice = 0;
+  const totalPrice = data.reduce((total, food) => total + food.price, 0);
 
   return (
-      <div>
+    <div>
       <div className='container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md' >
         <table className='table table-hover '>
           <thead className=' text-success fs-4'>
@@ -35,7 +46,7 @@ export default function Cart() {
                 <td>{food.qty}</td>
                 <td>{food.size}</td>
                 <td>{food.price}</td>
-                <td ><button type="button" className="btn btn-danger" onClick={() => { }}>Delete</button> </td></tr>
+                <td ><button type="button" className="btn btn-danger" onClick={() => { dispatch({ type: "REMOVE", index: index }) }}>Delete</button> </td></tr>
             ))}
           </tbody>
         </table>
