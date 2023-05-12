@@ -36,7 +36,7 @@ export default function Navbar() {
                 : ""}
               {(localStorage.getItem("token")) ?
                 <li className="nav-item">
-                  <Link className="nav-link fs-5 mx-3 active" aria-current="page" to="/myorder" >My Orders</Link>  {/* index.css - nav-link color white */}
+                  <Link className="nav-link fs-5 mx-3 active" aria-current="page" to="/myorders" >My Orders</Link>  {/* index.css - nav-link color white */}
                 </li> : ""}
             </ul>
             {(!localStorage.getItem("token")) ?

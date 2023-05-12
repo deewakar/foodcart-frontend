@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Cart from './pages/Cart';
+import MyOrders from './pages/MyOrders';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -19,6 +20,7 @@ export default function App() {
         <div className="d-flex flex-column min-vh-100">
       <Routes >
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/myorders" element={<MyOrders />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/cart" element={<Cart />} />
