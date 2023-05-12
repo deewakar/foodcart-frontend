@@ -45,6 +45,7 @@ export default function Navbar() {
                 <Link className="btn btn-outline-warning text-white mx-1 " to="/signup">Signup</Link>
               </form> :
               <div>
+                <p className="d-inline-block text-light p-3 ">{localStorage.getItem('userEmail')} </p>
                 <Link className="btn btn-outline-warning" to="/cart"> My Cart <span className="badge bg-success">{cartItems.length}</span></Link>
                  <button onClick={handleLogout} className="btn btn-outline-warning text-white mx-1" >Logout</button> </div>
             }

@@ -1,14 +1,5 @@
 import {useCart, useDispatchCart} from '../components/ContextReducer';
 export default function Cart() {
-  /*
-    const data = [
-        {"name": "Palak Paneer",
-        "qty": 3,
-            "size": 4,
-            "price": 150
-        }
-    ]
-  */
   let data = useCart();
   let dispatch = useDispatchCart();
   if (data.length === 0) {
@@ -18,7 +9,23 @@ export default function Cart() {
       </div>
     )
   }
-  const handleCheckOut = () => {
+  const handleCheckOut = async () => {
+    let userEmail = localStorage.getItem("userEmail");
+    let response = await fetch("http://localhost:5000/api/orderFood", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        order_data: data,
+        email: userEmail,
+        order_date: new Date().toDateString()
+      })
+    });
+    console.log("JSON RESPONSE:::::", response.status)
+    if (response.status === 200) {
+      dispatch({ type: "DROP" })
+    }
 
   };
 
