@@ -46,7 +46,7 @@ const [foodCat, setFoodCat] = useState([])
                                         .map(filterItems => {
                                             return (
                                                 <div key={filterItems.id} className='col-12 col-md-6 col-lg-3'>
-                                                    <Card foodName={filterItems.name} item={filterItems} options={filterItems.options[0]} ImgSrc={filterItems.img} ></Card>
+                                                    <Card foodName={filterItems.name} description={filterItems.description} item={filterItems} options={filterItems.options[0]} ImgSrc={filterItems.img} ></Card>
                                                 </div>
                                             )
                                         }) : <div> No Such Data </div>}

@@ -3,7 +3,7 @@ import React from 'react'
 export default function Footer() {
   return (
         <div >
-            <footer className="bg-warning d-flex flex-wrap justify-content-between align-items-center  pt-3 mt-4 border-top mt-auto" 
+            <footer className="bg-warning d-flex flex-wrap justify-content-between align-items-center  pt-3 mt-5 border-top " 
           style={{ height: '15vh' }}
             >
                 <div className="col-md-4 d-flex align-items-center">
