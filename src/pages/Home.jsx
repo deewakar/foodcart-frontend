@@ -5,6 +5,7 @@ import Card from '../components/Card';
 export default function Home() {
 const [foodCat, setFoodCat] = useState([])
   const [foodItems, setFoodItems] = useState([])
+  const [recommendedItems, setRecommendedItems] = useState([])
   const [search, setSearch] = useState('')
 
  function handleSearch (term) {
@@ -20,18 +21,59 @@ const [foodCat, setFoodCat] = useState([])
 
     });
 
-    response = await response.json()
-    setFoodItems(response[0])
-    setFoodCat(response[1])
+    response = await response.json();
+    setFoodItems(response[0]);
+    setFoodCat(response[1]);
   }
 
+    const loadRecommended = async() => {
+        let test = [
+            {'CategoryName': "Dessert",
+                'description': "Rich and fudgy chocolate brownie served with a scoop of vanilla ice cream.",
+                'img': "https://images.pexels.com/photos/3026804/pexels-photo-3026804.jpeg?cs=srgb&dl=pexels-ella-olsson-3026804.jpg&fm=jpg",
+                'name': "Chocolate Brownie",
+                'options': [{'regular': "80", 'with ice cream': "120"}],
+                '_id': "645f3e55f3fe19284a401aa9"
+        }
+        ];
+        let response = await fetch("http://localhost:5000/api/recommendations", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "email": localStorage.getItem('userEmail')
+            })
+        });
+
+        response = await response.json();
+        setRecommendedItems(response.data);
+    }
   useEffect(() => {
     loadFoodItems()
+    loadRecommended()
   }, [])
     return (
         <>
         <Carousel handleSearch={handleSearch}/>
             <div className='container'> 
+
+        {localStorage.getItem('token') && recommendedItems.length > 0 ? 
+                <div className='row mb-3'>
+                    <div className='fs-3 m-3'>Recommended For You </div>
+
+                    <hr id="hr-success" style={{ height: "4px", backgroundImage: "-webkit-linear-gradient(left,rgb(0, 255, 137),rgb(0, 0, 0))" }} />
+                    {recommendedItems.length !== 0 ? 
+                     recommendedItems.map(items => {
+                                            return (
+                                                <div key={items.id} className='col-12 col-md-6 col-lg-3'>
+                                                    <Card foodName={items.name} description={items.description} item={items} options={items.options[0]} ImgSrc={items.img} ></Card>
+                                                </div>
+                                            )
+                                        }) : <div> Nothing to Show Here </div>}
+                </div>
+       : "" }
+
                 {
                     foodCat.length !== 0
                         ? foodCat.map((data) => {
