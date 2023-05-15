@@ -27,19 +27,13 @@ export default function Carousel({handleSearch}) {
 				>
 					<div className=" carousel-caption  " style={{ zIndex: '9' }}>
 						<form className=" d-flex justify-content-center">
-							{' '}
-							{/* justify-content-center, copy this <form> from navbar for search box */}
 							<input
 								className="form-control me-2 w-75 bg-white text-dark"
 								type="search"
 								placeholder="Filter product e.g. Burger"
 								aria-label="Search"
+		                        onChange={(e) => handleSearch(e.target.value)}
 							/>
-							<button className="btn text-white bg-success" type="submit"
-						onClick={(e) => { e.preventDefault(); handleSearch(e.target.value)}}	
-							>
-								Search
-							</button>
 						</form>
 					</div>
 		                {CarouselItems.map((i) => {

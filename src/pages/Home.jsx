@@ -58,7 +58,10 @@ const [foodCat, setFoodCat] = useState([])
         <Carousel handleSearch={handleSearch}/>
             <div className='container'> 
 
-        {localStorage.getItem('token') && recommendedItems.length > 0 ? 
+
+        {search !== '' ? <div className='fs-3 m-3'>Search Results </div> : "" }
+
+        {localStorage.getItem('token') && recommendedItems.length > 0 && search === ''? 
                 <div className='row mb-3'>
                     <div className='fs-3 m-3'>Recommended For You </div>
 
@@ -80,9 +83,11 @@ const [foodCat, setFoodCat] = useState([])
                             return (
                                 // justify-content-center
                                 <div key={data.id} className='row mb-3'>
+                                    {search === '' ? 
+                                        <>
                                     <div className='fs-3 m-3'> {data.CategoryName} </div>
-
                                     <hr id="hr-success" style={{ height: "4px", backgroundImage: "-webkit-linear-gradient(left,rgb(0, 255, 137),rgb(0, 0, 0))" }} />
+                                      </>  :""}
                                     {foodItems.length !== 0 ? foodItems.filter(
                                         (items) => (items.CategoryName === data.CategoryName) && (items.name.toLowerCase().includes(search.toLowerCase())))
                                         .map(filterItems => {

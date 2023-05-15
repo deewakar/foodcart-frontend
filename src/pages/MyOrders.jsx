@@ -17,7 +17,6 @@ export default function MyOrder() {
 
             
         response = await response.json()
-        //console.log(response.orderData);
         setorderData(response.orderData)
         
     }

@@ -16,7 +16,6 @@ export default function Login() {
 
         });
         const json = await response.json()
-        console.log(json);
         if (json.success) {
             //save the auth token to local storage and redirect
             localStorage.setItem('userEmail', credentials.email)
