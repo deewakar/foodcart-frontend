@@ -11,7 +11,7 @@ export default function Cart() {
   }
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
-    let response = await fetch("http://localhost:5000/api/orderFood", {
+    let response = await fetch("https://foodcart-backend-production.up.railway.app/api/orderFood", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

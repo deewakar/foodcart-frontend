@@ -5,7 +5,7 @@ export default function MyOrder() {
     const [orderData, setorderData] = useState([])
 
     const getOrderHistory = async () => {
-        let response = await fetch("http://localhost:5000/api/orderHistory", {
+        let response = await fetch("https://foodcart-backend-production.up.railway.app/api/orderHistory", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

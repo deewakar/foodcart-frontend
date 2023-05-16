@@ -13,7 +13,7 @@ const [foodCat, setFoodCat] = useState([])
   }
 
   const loadFoodItems = async () => {
-    let response = await fetch("http://localhost:5000/api/", {
+    let response = await fetch("https://foodcart-backend-production.up.railway.app/api/", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ const [foodCat, setFoodCat] = useState([])
                 '_id': "645f3e55f3fe19284a401aa9"
         }
         ];
-        let response = await fetch("http://localhost:5000/api/recommendations", {
+        let response = await fetch("https://foodcart-backend-production.up.railway.app/api/recommendations", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -21,7 +21,7 @@ export default function Signup() {
 
     let [lat, long] = latlong
 
-    const response = await fetch("http://localhost:5000/api/getlocation", {
+    const response = await fetch("https://foodcart-backend-production.up.railway.app/api/getlocation", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/createuser", {
+    const response = await fetch("https://foodcart-backend-production.up.railway.app/api/createuser", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -82,7 +82,7 @@ export default function Signup() {
             />
           </div>
           <div className="m-3">
-            <label htmlFor="address" className="form-label">Address</label>
+            <label htmlFor="geolocation" className="form-label">Address</label>
             <fieldset>
               <input type="text" className="form-control" name='geolocation' aria-describedby="emailHelp"
                 value={credentials.geolocation}
@@ -92,12 +92,11 @@ export default function Signup() {
           </div>
           <div className="m-3">
             <button type="button" name="Select on Map" className=" btn btn-warning"
-    onClick={getLocation}
             >
-              Click for current Location </button>
+              Select on Map </button>
           </div>
           <div className="m-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+            <label htmlFor="password" className="form-label">Password</label>
             <input type="password" className="form-control" name='password' 
             value={credentials.password}
             onChange={onChange}
