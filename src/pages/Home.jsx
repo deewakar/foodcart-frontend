@@ -1,40 +1,42 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import Carousel from '../components/Carousel';
 import Card from '../components/Card';
+import './pagecss.css';
 
 export default function Home() {
-const [foodCat, setFoodCat] = useState([])
-  const [foodItems, setFoodItems] = useState([])
-  const [recommendedItems, setRecommendedItems] = useState([])
-  const [search, setSearch] = useState('')
+    const [foodCat, setFoodCat] = useState([])
+    const [foodItems, setFoodItems] = useState([])
+    const [recommendedItems, setRecommendedItems] = useState([])
+    const [search, setSearch] = useState('')
 
- function handleSearch (term) {
-      setSearch(term);
-  }
+    function handleSearch(term) {
+        setSearch(term);
+    }
 
-  const loadFoodItems = async () => {
-    let response = await fetch("https://foodcart-backend-production.up.railway.app/api/", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      }
+    const loadFoodItems = async () => {
+        let response = await fetch("https://foodcart-backend-production.up.railway.app/api/", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
 
-    });
+        });
 
-    response = await response.json();
-    setFoodItems(response[0]);
-    setFoodCat(response[1]);
-  }
+        response = await response.json();
+        setFoodItems(response[0]);
+        setFoodCat(response[1]);
+    }
 
-    const loadRecommended = async() => {
+    const loadRecommended = async () => {
         let test = [
-            {'CategoryName': "Dessert",
+            {
+                'CategoryName': "Dessert",
                 'description': "Rich and fudgy chocolate brownie served with a scoop of vanilla ice cream.",
                 'img': "https://images.pexels.com/photos/3026804/pexels-photo-3026804.jpeg?cs=srgb&dl=pexels-ella-olsson-3026804.jpg&fm=jpg",
                 'name': "Chocolate Brownie",
-                'options': [{'regular': "80", 'with ice cream': "120"}],
+                'options': [{ 'regular': "80", 'with ice cream': "120" }],
                 '_id': "645f3e55f3fe19284a401aa9"
-        }
+            }
         ];
         let response = await fetch("https://foodcart-backend-production.up.railway.app/api/recommendations", {
             method: 'POST',
@@ -49,33 +51,33 @@ const [foodCat, setFoodCat] = useState([])
         response = await response.json();
         setRecommendedItems(response.data);
     }
-  useEffect(() => {
-    loadFoodItems()
-    loadRecommended()
-  }, [])
+    useEffect(() => {
+        loadFoodItems()
+        loadRecommended()
+    }, [])
     return (
         <>
-        <Carousel handleSearch={handleSearch}/>
-            <div className='container'> 
+            <Carousel handleSearch={handleSearch} />
+            <div className='container'>
 
 
-        {search !== '' ? <div className='fs-3 m-3'>Search Results </div> : "" }
+                {search !== '' ? <div className='fs-3 m-3'>Search Results </div> : ""}
 
-        {localStorage.getItem('token') && recommendedItems.length > 0 && search === ''? 
-                <div className='row mb-3'>
-                    <div className='fs-3 m-3'>Recommended For You </div>
+                {localStorage.getItem('token') && recommendedItems.length > 0 && search === '' ?
+                    <div className='row mb-3'>
+                        <div className='fs-3 m-3 recommendation h1'>Recommended For You</div>
 
-                    <hr id="hr-success" style={{ height: "4px", backgroundImage: "-webkit-linear-gradient(left,rgb(0, 255, 137),rgb(0, 0, 0))" }} />
-                    {recommendedItems.length !== 0 ? 
-                     recommendedItems.map(items => {
-                                            return (
-                                                <div key={items.id} className='col-12 col-md-6 col-lg-3'>
-                                                    <Card foodName={items.name} description={items.description} item={items} options={items.options[0]} ImgSrc={items.img} ></Card>
-                                                </div>
-                                            )
-                                        }) : <div> Nothing to Show Here </div>}
-                </div>
-       : "" }
+                        <hr id="hr-success" style={{ height: "4px", backgroundImage: "-webkit-linear-gradient(left,rgb(0, 255, 137),rgb(0, 0, 0))" }} />
+                        {recommendedItems.length !== 0 ?
+                            recommendedItems.map(items => {
+                                return (
+                                    <div key={items.id} className='col-12 col-md-6 col-lg-3'>
+                                        <Card foodName={items.name} description={items.description} item={items} options={items.options[0]} ImgSrc={items.img} ></Card>
+                                    </div>
+                                )
+                            }) : <div> Nothing to Show Here </div>}
+                    </div>
+                    : ""}
 
                 {
                     foodCat.length !== 0
@@ -83,11 +85,11 @@ const [foodCat, setFoodCat] = useState([])
                             return (
                                 // justify-content-center
                                 <div key={data.id} className='row mb-3'>
-                                    {search === '' ? 
+                                    {search === '' ?
                                         <>
-                                    <div className='fs-3 m-3'> {data.CategoryName} </div>
-                                    <hr id="hr-success" style={{ height: "4px", backgroundImage: "-webkit-linear-gradient(left,rgb(0, 255, 137),rgb(0, 0, 0))" }} />
-                                      </>  :""}
+                                            <div className='fs-3 m-3 h2'>{data.CategoryName} </div>
+                                            <hr id="hr-success" style={{ height: "4px", backgroundImage: "-webkit-linear-gradient(left,rgb(0, 255, 137),rgb(0, 0, 0))" }} />
+                                        </> : ""}
                                     {foodItems.length !== 0 ? foodItems.filter(
                                         (items) => (items.CategoryName === data.CategoryName) && (items.name.toLowerCase().includes(search.toLowerCase())))
                                         .map(filterItems => {
