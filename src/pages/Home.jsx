@@ -7,6 +7,7 @@ export default function Home() {
     const [foodCat, setFoodCat] = useState([])
     const [foodItems, setFoodItems] = useState([])
     const [recommendedItems, setRecommendedItems] = useState([])
+    const [popularItems, setPopularItems] = useState([])
     const [search, setSearch] = useState('')
 
     function handleSearch(term) {
@@ -51,9 +52,22 @@ export default function Home() {
         response = await response.json();
         setRecommendedItems(response.data);
     }
+
+ const loadPopular = async () => {
+        let response = await fetch("https://foodcart-backend-production.up.railway.app/api/popular", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        response = await response.json();
+        setPopularItems(response);
+    }
     useEffect(() => {
-        loadFoodItems()
-        loadRecommended()
+        loadFoodItems();
+        loadRecommended();
+        loadPopular();
     }, [])
     return (
         <>
@@ -79,6 +93,22 @@ export default function Home() {
                     </div>
                     : ""}
 
+                 {popularItems.length > 0 && search === '' ?
+                    <div className='row mb-3'>
+                        <div className='fs-3 m-3 recommendation h1'>Most Popular</div>
+
+                        <hr id="hr-success" style={{ height: "4px", backgroundImage: "-webkit-linear-gradient(left,rgb(0, 255, 137),rgb(0, 0, 0))" }} />
+                        {popularItems.length !== 0 ?
+                            popularItems.map(items => {
+                                return (
+                                    <div key={items.id} className='col-12 col-md-6 col-lg-3'>
+                                        <Card foodName={items.name} description={items.description} item={items} options={items.options[0]} ImgSrc={items.img} ></Card>
+                                    </div>
+                                )
+                            }) : <div> Nothing to Show Here </div>}
+                    </div>
+                    : ""}
+   
                 {
                     foodCat.length !== 0
                         ? foodCat.map((data) => {
