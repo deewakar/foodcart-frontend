@@ -18,8 +18,6 @@ export default function Signup() {
     });
     const json = await response.json()
     if (json.success) {
-      //save the auth token to local storage and redirect
-      localStorage.setItem('token', json.authToken)
       navigate("/login")
 
     }
