@@ -2,7 +2,7 @@ import {useState} from 'react'
 
 import { Link, useNavigate } from 'react-router-dom';
 export default function Signup() {
-  const [credentials, setCredentials] = useState({ name: "", email: "", password: "", geolocation: "" })
+  const [credentials, setCredentials] = useState({ name: "", email: "", phone:"", password: "", geolocation: "" })
   let navigate = useNavigate()
 
   
@@ -13,7 +13,7 @@ export default function Signup() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, location: credentials.geolocation })
+        body: JSON.stringify({ name: credentials.name, email: credentials.email, phone: credentials.phone, password: credentials.password, location: credentials.geolocation })
 
     });
     const json = await response.json()
@@ -53,15 +53,23 @@ export default function Signup() {
               onChange={onChange}
             />
           </div>
-          <div className="m-3">
-            <label htmlFor="geolocation" className="form-label">Address</label>
-            <fieldset>
-              <input type="text" className="form-control" name='geolocation' aria-describedby="emailHelp"
-                value={credentials.geolocation}
-                onChange={onChange}
-              />
-            </fieldset>
-          </div>
+      <div className="m-3">
+      <label htmlFor="phone" className="form-label">Mobile Phone</label>
+      <input type="text" className="form-control" name='phone' aria-describedby="emailHelp"
+      value={credentials.phone}
+      onChange={onChange}
+      />
+      </div>
+
+      <div className="m-3">
+      <label htmlFor="geolocation" className="form-label">Address</label>
+      <fieldset>
+      <input type="text" className="form-control" name='geolocation' aria-describedby="emailHelp"
+      value={credentials.geolocation}
+      onChange={onChange}
+      />
+      </fieldset>
+      </div>
       <div className="m-3">
       <label htmlFor="password" className="form-label">Password</label>
       <input type="password" className="form-control" name='password' 
