@@ -3,37 +3,9 @@ import {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 export default function Signup() {
   const [credentials, setCredentials] = useState({ name: "", email: "", password: "", geolocation: "" })
-  let [address, setAddress] = useState("");
   let navigate = useNavigate()
 
-  const getLocation = async (e) => {
-    e.preventDefault();
-    let navLocation = () => {
-      return new Promise((res, rej) => {
-        navigator.geolocation.getCurrentPosition(res, rej);
-      });
-    }
-    let latlong = await navLocation().then(res => {
-      let latitude = res.coords.latitude;
-      let longitude = res.coords.longitude;
-      return [latitude, longitude]
-    })
-
-    let [lat, long] = latlong
-
-    const response = await fetch("https://foodcart-backend-production.up.railway.app/api/getlocation", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ latlong: { lat, long } })
-
-    });
-    const { location } = await response.json()
-    setAddress(location);
-    setCredentials({ ...credentials, [e.target.name]: location })
-  }
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("https://foodcart-backend-production.up.railway.app/api/createuser", {
@@ -90,23 +62,18 @@ export default function Signup() {
               />
             </fieldset>
           </div>
-          <div className="m-3">
-            <button type="button" name="Select on Map" className=" btn btn-warning"
-            >
-              Select on Map </button>
-          </div>
-          <div className="m-3">
-            <label htmlFor="password" className="form-label">Password</label>
-            <input type="password" className="form-control" name='password' 
-            value={credentials.password}
-            onChange={onChange}
-            />
-          </div>
-          <button type="submit" className="m-3 btn btn-success">Submit</button>
-          <Link to="/login" className="m-3 mx-1 btn btn-danger">Already a user</Link>
-        </form>
+      <div className="m-3">
+      <label htmlFor="password" className="form-label">Password</label>
+      <input type="password" className="form-control" name='password' 
+      value={credentials.password}
+      onChange={onChange}
+      />
       </div>
-    </div>
+      <button type="submit" className="m-3 btn btn-success">Submit</button>
+      <Link to="/login" className="m-3 mx-1 btn btn-danger">Already a user</Link>
+      </form>
+      </div>
+      </div>
   )
 
 }
