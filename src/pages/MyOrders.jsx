@@ -41,7 +41,7 @@ export default function MyOrder() {
                         </div> 
                             <hr />
 
-                            <div className="col-12 col-md-6 col-lg-3">
+                            <div className="d-flex justify-content-between flex-wrap">
                             
                             {order.slice(1).map((foodItem) => {
                                 return (
@@ -49,6 +49,7 @@ export default function MyOrder() {
                                 <div key={foodItem.id} className="card mt-3" style={{ width: "16rem", maxHeight: "360px" }}>
                                     {/*<img src="" className="card-img-top" alt="..." style={{ height: "120px", objectFit: "fill" }} />*/}
                                     <div className="card-body">
+					<img src={foodItem.img} width="200" height="200" />
                                         <h5 className="card-title">{foodItem.name}</h5>
                                         <div className="container w-100 p-0" style={{ height: "38px" }}>
                                             <span className="m-1">{foodItem.qty}</span>
