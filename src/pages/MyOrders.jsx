@@ -17,7 +17,7 @@ export default function MyOrder() {
 
             
         response = await response.json()
-        setorderData(response.orderData)
+        setorderData(response.orderData.reverse())
         
     }
 
@@ -35,9 +35,14 @@ export default function MyOrder() {
                 <div className='row '>
 
                     <div>
-                        <div className='m-auto mt-5'>
+                        <div className='d-flex justify-content-between m-auto mt-5'>
 
-                           <h2>{order[0]}</h2>
+                                        <h2>{new Date(order[0]).toDateString()}</h2>
+                            {/* Suppose the food is considered delivered after 20 mins */}
+                            {Math.floor(Date.now() - Date.parse(order[0])) > (1000 * 60 * 20) ?
+                                        <div className="btn btn-outline-success"> Delivered <span className="">✔</span></div>:
+                                        <div className="btn btn-outline-warning"> Processing... </div>
+                                        }
                         </div> 
                             <hr />
 
@@ -47,9 +52,8 @@ export default function MyOrder() {
                                 return (
 
                                 <div key={foodItem.id} className="card mt-3" style={{ width: "16rem", maxHeight: "360px" }}>
-                                    {/*<img src="" className="card-img-top" alt="..." style={{ height: "120px", objectFit: "fill" }} />*/}
                                     <div className="card-body">
-					<img src={foodItem.img} width="200" height="200" />
+                                            <img src={foodItem.img} width="200" height="200" />
                                         <h5 className="card-title">{foodItem.name}</h5>
                                         <div className="container w-100 p-0" style={{ height: "38px" }}>
                                             <span className="m-1">{foodItem.qty}</span>
