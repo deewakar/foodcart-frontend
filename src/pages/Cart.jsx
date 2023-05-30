@@ -11,7 +11,7 @@ export default function Cart() {
   }
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
-    let response = await fetch("https://foodcart-backend-production.up.railway.app/api/orderFood", {
+    let response = await fetch(`${import.meta.env.VITE_API_URL}/orderFood`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -50,11 +50,11 @@ export default function Cart() {
               <tr>
                 <th scope='row' >{index + 1}</th>
                 <td ><img src={food.img} width="200" height="200" /></td>
-                <td style={{'vertical-align': 'middle' }}>{food.name}</td>
-                <td style={{'vertical-align': 'middle' }}>{food.qty}</td>
-                <td style={{'vertical-align': 'middle' }}>{food.size}</td>
-                <td style={{'vertical-align': 'middle' }}>{food.price}</td>
-                <td style={{'vertical-align': 'middle' }}><button type="button" className="btn btn-danger" onClick={() => { dispatch({ type: "REMOVE", index: index }) }}>Delete</button> </td></tr>
+                <td style={{'verticalAlign': 'middle' }}>{food.name}</td>
+                <td style={{'verticalAlign': 'middle' }}>{food.qty}</td>
+                <td style={{'verticalAlign': 'middle' }}>{food.size}</td>
+                <td style={{'verticalAlign': 'middle' }}>{food.price}</td>
+                <td style={{'verticalAlign': 'middle' }}><button type="button" className="btn btn-danger" onClick={() => { dispatch({ type: "REMOVE", index: index }) }}>Delete</button> </td></tr>
             ))}
           </tbody>
         </table>

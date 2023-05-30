@@ -7,7 +7,7 @@ export default function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("https://foodcart-backend-production.up.railway.app/api/login", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
