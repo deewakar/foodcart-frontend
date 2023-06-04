@@ -37,20 +37,26 @@
 .title{
     margin: 8px;
 }
-
-.description{
+.card-title {
+    white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+}
+.description {
     margin: 5px;
     overflow-x: hidden;
     overflow-y: auto;
     height: 90px;
 }
 
-select, option {
-	max-width: 6rem;
-}
+select,
 option {
-	overflow: hidden;
-	text-overflow: ellipses;
+    max-width: 6rem;
+}
+
+option {
+    overflow: hidden;
+    text-overflow: ellipses;
 }
 
 .count {
@@ -61,30 +67,30 @@ option {
     padding: 0;
 }
 
-.number{
+.number {
     margin: 20px;
     padding: 0;
 }
 
-.price{
+.price {
     margin: 0;
     font-weight: 700;
 }
 
 
-hr{
+hr {
     margin-top: 0;
 }
 
-button{
+button {
     background-color: rgb(69, 148, 69);
     color: white;
     border-radius: 7px;
     border: none;
 }
 
-.button{
-    margin:0;
+.button {
+    margin: 0;
     padding: 8px;
     text-align: center;
 }
