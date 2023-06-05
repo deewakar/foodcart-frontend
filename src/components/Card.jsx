@@ -72,7 +72,7 @@ export default function Card(props) {
                 </div>
                 <div className="title">
                   <h5 className="fw-bold card-title">{props.foodName} </h5>
-                  <h6 className="fw-light text-primary">{props.item._source.toUpperCase()}</h6>
+                  <h6 className="fw-light text-success">{props.item._source.toUpperCase()}</h6>
                 </div>
                 <div className="description">
                   <p>
