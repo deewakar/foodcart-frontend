@@ -54,6 +54,7 @@ export default function Home() {
         response = await response.json();
         setPopularItems(response);
     }
+
     useEffect(() => {
         loadFoodItems();
         loadRecommended();
@@ -105,12 +106,15 @@ export default function Home() {
                             return (
                                 // justify-content-center
                                 <div key={data.id} className='row mb-3'>
-                                    {search === '' ?
+                                    {foodItems.filter((items) => (items.CategoryName === data.CategoryName) &&
+                                       (items.name.toLowerCase().includes(search.toLowerCase()))).length > 0 ?
+
                                         <>
                                             <div className='fs-3 m-3 h2'>{data.CategoryName} </div>
                                             <hr id="hr-success" style={{ height: "4px", backgroundImage: "-webkit-linear-gradient(left,rgb(0, 255, 137),rgb(0, 0, 0))" }} />
                                         </> : ""}
                                     {foodItems.length !== 0 ? foodItems.filter(
+
                                         (items) => (items.CategoryName === data.CategoryName) && (items.name.toLowerCase().includes(search.toLowerCase())))
                                         .map(filterItems => {
                                             return (

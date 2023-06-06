@@ -48,7 +48,6 @@ export default function Card(props) {
 
     await dispatch({ type: "ADD", id: foodItem._id, name: foodItem.name, price: finalPrice, qty: qty, size: size, img: foodItem.img })
 
-
   }
 
   useEffect(() => {
@@ -68,7 +67,7 @@ export default function Card(props) {
               <div className="card_section">
                 <div className="card_img fourth">
                   <img src={props.ImgSrc}
-                    className="card_img" alt="..." />
+                       className="card_img" alt="..." />
                 </div>
                 <div className="title">
                   <h5 className="fw-bold card-title">{props.foodName} </h5>
@@ -82,16 +81,16 @@ export default function Card(props) {
                 <div className="number">
                   <div className="count">
                     <select className="m-2 h-100 w-20 p-1 bg-info text-black rounded" style={{
-                      select: '#FF0000'
-                    }} onChange={handleQty}>
+                              select: '#FF0000'
+                            }} onChange={handleQty}>
                       {Array.from(Array(6), (e, i) => {
                         return (
                           <option key={i + 1} value={i + 1}>{i + 1}</option>)
                       })}
                     </select>
                     <select className="m-2 h-100 w-20 p-1 bg-info text-black rounded"
-                      style={{ select: '#FF0000' }}
-                      ref={priceRef} onChange={handleOptions}>
+                            style={{ select: '#FF0000' }}
+                            ref={priceRef} onChange={handleOptions}>
                       {priceOptions.map((i) => {
                         return <option key={i} value={i}>{i}</option>
                       })}
@@ -101,7 +100,7 @@ export default function Card(props) {
                 </div>
                 <hr />
                 <div className="button">
-                  <button className="card_button p-2 rounded" onClick={handleAddToCart}>
+                  <button className="card-button p-2 rounded" onClick={handleAddToCart}>
                     Add to Cart
                   </button>
                 </div>

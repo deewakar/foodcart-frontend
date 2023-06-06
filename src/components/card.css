@@ -82,11 +82,19 @@ hr {
     margin-top: 0;
 }
 
-button {
+.card-button {
     background-color: rgb(69, 148, 69);
     color: white;
     border-radius: 7px;
     border: none;
+}
+
+.card-button:hover {
+    background-color: rgb(69,169,69)
+}
+
+.card-button:active {
+    background-color: rgb(69,139,69)
 }
 
 .button {
