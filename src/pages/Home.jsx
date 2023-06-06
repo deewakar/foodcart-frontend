@@ -29,16 +29,6 @@ export default function Home() {
     }
 
     const loadRecommended = async () => {
-        let test = [
-            {
-                'CategoryName': "Dessert",
-                'description': "Rich and fudgy chocolate brownie served with a scoop of vanilla ice cream.",
-                'img': "https://images.pexels.com/photos/3026804/pexels-photo-3026804.jpeg?cs=srgb&dl=pexels-ella-olsson-3026804.jpg&fm=jpg",
-                'name': "Chocolate Brownie",
-                'options': [{ 'regular': "80", 'with ice cream': "120" }],
-                '_id': "645f3e55f3fe19284a401aa9"
-            }
-        ];
         let response = await fetch(`${import.meta.env.VITE_API_URL}/recommendations`, {
             method: 'POST',
             headers: {

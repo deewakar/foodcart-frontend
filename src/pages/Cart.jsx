@@ -38,6 +38,7 @@ export default function Cart() {
           <thead className=' text-success fs-4'>
             <tr>
               <th scope='col' >#</th>
+              <th scope='col' ></th>
               <th scope='col' >Name</th>
               <th scope='col' >Quantity</th>
               <th scope='col' >Option</th>
