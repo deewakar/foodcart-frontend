@@ -43,7 +43,7 @@ export default function Home() {
         setRecommendedItems(response.data);
     }
 
- const loadPopular = async () => {
+    const loadPopular = async () => {
         let response = await fetch(`${import.meta.env.VITE_API_URL}/popular`, {
             method: 'POST',
             headers: {
@@ -83,7 +83,7 @@ export default function Home() {
                     </div>
                     : ""}
 
-                 {popularItems.length > 0 && search === '' ?
+                {popularItems.length > 0 && search === '' ?
                     <div className='row mb-3'>
                         <div className='fs-3 m-3 recommendation h1'>Most Popular</div>
 
@@ -98,7 +98,7 @@ export default function Home() {
                             }) : <div> Nothing to Show Here </div>}
                     </div>
                     : ""}
-   
+
                 {
                     foodCat.length !== 0
                         ? foodCat.map((data) => {

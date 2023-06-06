@@ -15,19 +15,19 @@ import { CartProvider } from './components/ContextReducer';
 export default function App() {
   return (
     <CartProvider>
-    <Router>
-    <Navbar />
+      <Router>
+        <Navbar />
         <div className="d-flex flex-column min-vh-100">
-      <Routes >
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/myorders" element={<MyOrders />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/signup" element={<Signup />} />
-        <Route exact path="/cart" element={<Cart />} />
-      </Routes>
-          </div>
-    <Footer />
-</Router>
+          <Routes >
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/myorders" element={<MyOrders />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/signup" element={<Signup />} />
+            <Route exact path="/cart" element={<Cart />} />
+          </Routes>
+        </div>
+        <Footer />
+      </Router>
     </CartProvider>
   );
 }

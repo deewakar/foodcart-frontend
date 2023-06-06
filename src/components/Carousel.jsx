@@ -1,4 +1,4 @@
-export default function Carousel({handleSearch}) {
+export default function Carousel({ handleSearch }) {
 	const CarouselItems = [
 		{
 			"name": "Pancakes with fruit salad and maple sauce",
@@ -32,26 +32,26 @@ export default function Carousel({handleSearch}) {
 								type="search"
 								placeholder="Filter product e.g. Burger"
 								aria-label="Search"
-		                        onChange={(e) => handleSearch(e.target.value)}
+								onChange={(e) => handleSearch(e.target.value)}
 							/>
 						</form>
 					</div>
-		                {CarouselItems.map((i) => {
-							return (
-								<div key={i.name} className="carousel-item active">
-									<img
-										src={i.img}
-										className="d-block w-100"
-										style={{
-											height: 500,
-											filter: 'brightness(50%)',
-											objectFit: 'cover',
-										}}
-										alt="..."
-									/>
-								</div>
-							)
-						})}
+					{CarouselItems.map((i) => {
+						return (
+							<div key={i.name} className="carousel-item active">
+								<img
+									src={i.img}
+									className="d-block w-100"
+									style={{
+										height: 500,
+										filter: 'brightness(50%)',
+										objectFit: 'cover',
+									}}
+									alt="..."
+								/>
+							</div>
+						)
+					})}
 					<button
 						className="carousel-control-prev"
 						type="button"

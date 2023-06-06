@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
-import {useCart} from './ContextReducer';
+import { useCart } from './ContextReducer';
 
 export default function Navbar() {
   let navigate = useNavigate();
@@ -11,11 +11,11 @@ export default function Navbar() {
     localStorage.removeItem('userEmail');
     navigate("/");
   }
-  
+
   const loadCart = () => {
 
   }
-  
+
   const currentPath = useLocation().pathname;
   const cartItems = useCart();
   return (
@@ -48,7 +48,7 @@ export default function Navbar() {
               <div>
                 <p className="d-inline-block text-light p-3 ">{localStorage.getItem('userEmail')} </p>
                 <Link className="btn btn-outline-warning" to="/cart"> My Cart <span className="badge bg-success">{cartItems.length}</span></Link>
-                 <button onClick={handleLogout} className="btn btn-outline-warning text-white mx-1" >Logout</button> </div>
+                <button onClick={handleLogout} className="btn btn-outline-warning text-white mx-1" >Logout</button> </div>
             }
             {/*
                 <div className="btn bg-white text-success mx-2 " onClick={loadCart}>
