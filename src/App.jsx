@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Cart from './pages/Cart';
 import MyOrders from './pages/MyOrders';
+import Dashboard from './pages/Dashboard';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -21,6 +22,7 @@ export default function App() {
           <Routes >
             <Route exact path="/" element={<Home />} />
             <Route exact path="/myorders" element={<MyOrders />} />
+            <Route exact path="/dashboard" element={<Dashboard />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Signup />} />
             <Route exact path="/cart" element={<Cart />} />

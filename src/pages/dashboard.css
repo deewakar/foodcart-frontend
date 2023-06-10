@@ -1,0 +1,27 @@
+.node circle {
+	fill: rgb(157, 206, 314);
+	stroke: rgb(184, 37, 81);
+	stroke-width: 1.5px;
+}
+
+.node text {
+	font-size: 11px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: black;
+	fill: black;
+}
+
+.node {
+	cursor: pointer;
+}
+
+path.link {
+	fill: none;
+	stroke: #2593B8;
+	stroke-width: 1.5px;
+}
+
+.rd3t-label{
+    margin: 30px;
+    padding: 5px;
+}
