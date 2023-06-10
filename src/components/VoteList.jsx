@@ -12,17 +12,17 @@ export default function VoteList(props) {
       <tbody>
       {props.data.map(item => {
         return (
-          item.votes.yes > item.votes.no ?
-            <tr className="mb-2 table-success ">
+          item.yes > item.no ?
+            <tr key={item.id} className="mb-2 table-success ">
               <td>{item.name}</td>
-              <td>yes:{item.votes.yes}, no:{item.votes.no}</td>
+              <td>yes:{item.yes}, no:{item.no}</td>
             </tr> :
-          <tr className="">
+          <tr key={item.id} className="">
               <td>
             {item.name}
                 </td>
               <td>
-              yes:{item.votes.yes}, no:{item.votes.no}
+              yes:{item.yes}, no:{item.no}
                 </td>
               </tr>
           
