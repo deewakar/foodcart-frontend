@@ -11,12 +11,6 @@ export default function Dashboard() {
   const [voteData, setVoteData] = useState([]);
   const [maxTrees, setMaxTrees] = useState(3);
 
-  /*
-  const voteData = [
-    {'name': "Veggie Burger", 'votes': {'yes': 3, 'no': 0}},
-    {'name': "Greek Salad", 'votes': {'yes': 1, 'no': 2}},
-    {'name': "Tomato Soup", 'votes': {'yes': 2, 'no': 1}},]; 
-    */
   function convert(tree, attr) {
     let res = {}
     if(tree ?? undefined !== undefined) {
@@ -32,115 +26,6 @@ export default function Dashboard() {
       return null;
     }
   }
-
-/*
-  const tree = {
-    "attr": "category",
-    "children": {
-        "Pizza": {
-            "attr": "price",
-            "children": {
-                "medium": {
-                    "attr": "yes",
-                    "children": null
-                },
-                "low": {
-                    "attr": "yes",
-                    "children": null
-                },
-                "high": {
-                    "attr": "price",
-                    "children": {
-                        "medium": {
-                            "attr": "yes",
-                            "children": null
-                        },
-                        "low": {
-                            "attr": "yes",
-                            "children": null
-                        },
-                        "high": {
-                            "attr": "yes",
-                            "children": null
-                        }
-                    }
-                }
-            }
-        },
-        "Burger": {
-            "attr": "yes",
-            "children": null
-        },
-        "Salad": {
-            "attr": "no",
-            "children": null
-        },
-        "Sandwich": {
-            "attr": "yes",
-            "children": null
-        },
-        "Dessert": {
-            "attr": "yes",
-            "children": null
-        },
-        "Pasta": {
-            "attr": "no",
-            "children": null
-        },
-        "Soup": {
-            "attr": "source",
-            "children": {
-                "kathmandu": {
-                    "attr": "yes",
-                    "children": null
-                },
-                "lalitpur": {
-                    "attr": "yes",
-                    "children": null
-                },
-                "bhaktapur": {
-                    "attr": "no",
-                    "children": null
-                }
-            }
-        },
-        "Breakfast": {
-            "attr": "source",
-            "children": {
-                "kathmandu": {
-                    "attr": "yes",
-                    "children": null
-                },
-                "lalitpur": {
-                    "attr": "yes",
-                    "children": null
-                },
-                "bhaktapur": {
-                    "attr": "no",
-                    "children": null
-                }
-            }
-        },
-        "Biryani/Rice": {
-            "attr": "source",
-            "children": {
-                "kathmandu": {
-                    "attr": "yes",
-                    "children": null
-                },
-                "lalitpur": {
-                    "attr": "no",
-                    "children": null
-                },
-                "bhaktapur": {
-                    "attr": "yes",
-                    "children": null
-                }
-            }
-        }
-    }
-};
-*/
 
  const loadData = async () => {
     let response = await fetch(`${import.meta.env.VITE_API_URL}/dashboard`, {
@@ -172,7 +57,6 @@ export default function Dashboard() {
   
   const clickHandler = (e) => {
     e.preventDefault();
-    console.log(maxTrees);
     loadData();
   }
     return (
